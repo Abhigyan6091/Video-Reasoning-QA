@@ -103,6 +103,4 @@ Video Question Generator/
 | Database | SQLite (Async) |
 | Frontend | Vanilla HTML/CSS/JS (Premium Dark) |
 
-## 📄 License
 
-MIT
