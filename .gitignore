@@ -1,0 +1,41 @@
+# Environment
+.env
+.venv/
+env/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Agents & Internal Artifacts
+.agents/
+.antigravitycli/
+.codex/
+.aider*
+.gemini/
+brain/
+
+# Data
+uploads/
+frames/
+audio_temp/
+explanations/
+data/
+*.db
+*.faiss
+*.index
+*.pkl
+
+# IDE
+.vscode/
+.idea/
+.aider.chat.history.md
+.aider.conf.yml
+*.swp
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Docker
+*.log

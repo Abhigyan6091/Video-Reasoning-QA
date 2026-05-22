@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI-powered reasoning question generator from MP4 videos. Generate intelligent, context-aware questions using deep video understanding.">
+    <title>Video Question Generator – AI-Powered Video Analysis</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+</head>
+<body>
+    <div class="app-container">
+
+        <!-- ── Header ──────────────────────────────────────────── -->
+        <header class="app-header">
+            <h1>Video Question Generator</h1>
+            <p class="subtitle">Deep AI reasoning · Temporal analysis · Multi-scene understanding</p>
+            <div class="header-badge">
+                <span class="dot"></span>
+                <span>Powered by Gemini + Whisper</span>
+            </div>
+        </header>
+
+        <!-- ── Upload Zone ─────────────────────────────────────── -->
+        <section class="upload-section">
+            <div class="upload-zone" id="uploadZone">
+                <div class="icon">🎥</div>
+                <div class="label">Drop your MP4 video here or click to browse</div>
+                <div class="hint">Supports MP4 files up to 500 MB</div>
+                <div class="language-picker" onclick="event.stopPropagation()">
+                    <label for="languageSelect">Question Language:</label>
+                    <select id="languageSelect">
+                        <option value="english">English</option>
+                        <option value="hindi">Hindi</option>
+                        <option value="mixed">Mixed (Hindi + English)</option>
+                    </select>
+                </div>
+                <input type="file" id="fileInput" accept="video/mp4,.mp4">
+            </div>
+        </section>
+
+        <!-- ── Progress ────────────────────────────────────────── -->
+        <section class="progress-section" id="progressSection">
+            <div class="progress-card">
+                <div class="progress-header">
+                    <h3>⚡ Processing <span id="progressVideoName"></span></h3>
+                    <span class="progress-percent" id="progressPercent">0%</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+                <div class="progress-steps" id="progressSteps"></div>
+            </div>
+        </section>
+
+        <!-- ── Stats Bar ───────────────────────────────────────── -->
+        <div class="stats-bar" id="statsBar">
+            <div class="stat-card">
+                <div class="stat-value" id="statTotal">0</div>
+                <div class="stat-label">Total Questions</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="statScenes">0</div>
+                <div class="stat-label">Scenes Detected</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="statCategories">0</div>
+                <div class="stat-label">Categories</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="statExpert">0</div>
+                <div class="stat-label">Expert Level</div>
+            </div>
+        </div>
+
+        <!-- ── Scene Timeline ──────────────────────────────────── -->
+        <div class="scene-timeline" id="sceneTimeline">
+            <div class="timeline-header">🎬 Scene Timeline</div>
+            <div class="timeline-track" id="timelineTrack"></div>
+        </div>
+
+        <!-- ── Transcript Section ──────────────────────────────── -->
+        <section class="transcript-section" id="transcriptSection" style="display: none;">
+            <div class="transcript-card">
+                <div class="transcript-header" id="transcriptHeader">
+                    <span class="title">🎙️ Video Transcript</span>
+                    <div class="header-actions">
+                        <button class="btn btn-ghost btn-sm" id="btnDownloadTranscriptTxt">📄 Download TXT</button>
+                        <button class="btn btn-ghost btn-sm" id="btnDownloadTranscriptJson">📦 Download JSON</button>
+                        <button class="btn btn-ghost btn-sm toggle-btn" id="btnToggleTranscript">▼ Collapse</button>
+                    </div>
+                </div>
+                <div class="transcript-body" id="transcriptBody">
+                    <div class="transcript-text" id="transcriptText"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── Controls Bar ────────────────────────────────────── -->
+        <div class="controls-bar" id="controlsBar">
+            <div class="filter-group">
+                <label>Category</label>
+                <select class="filter-select" id="filterCategory">
+                    <option value="">All Categories</option>
+                    <option value="temporal">Temporal</option>
+                    <option value="causal">Causal</option>
+                    <option value="counterfactual">Counterfactual</option>
+                    <option value="contradiction">Contradiction</option>
+                    <option value="emotion">Emotion</option>
+                    <option value="multi_scene">Multi-Scene</option>
+                    <option value="symbolic">Symbolic</option>
+                    <option value="audio_visual_alignment">Audio-Visual Alignment</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Difficulty</label>
+                <select class="filter-select" id="filterDifficulty">
+                    <option value="">All Difficulties</option>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                    <option value="expert">Expert</option>
+                </select>
+            </div>
+            <div class="controls-spacer"></div>
+            <button class="btn btn-ghost" id="btnExportCSV">📄 Export CSV</button>
+            <button class="btn btn-ghost" id="btnExportJSON">📦 Export JSON</button>
+            <button class="btn btn-primary" id="btnRegenerate">🔄 Regenerate</button>
+        </div>
+
+        <!-- ── Questions Section ───────────────────────────────── -->
+        <section class="questions-section" id="questionsSection"></section>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
